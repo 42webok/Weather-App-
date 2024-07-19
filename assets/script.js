@@ -5,7 +5,11 @@ let w = document.querySelector(".weather");
 async function checkWeather(city) {
   try {
     const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
-
+        if(response.status == 404){
+            alert("Enter Valid City Name");
+            w.style.display  = "none";
+         }
+    
     const data = await response.json();
     console.log("Current weather in Multan:", data);
   
